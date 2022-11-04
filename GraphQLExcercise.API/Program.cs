@@ -1,7 +1,6 @@
 using GraphQLExcercise.API;
 using GraphQLExcercise.API.Schema;
 using GraphQLExcercise.API.Schema.Queries;
-using GraphQLExcercise.API.Schema.Mutations;
 
 var builder = WebApplication.CreateBuilder(args);
 
