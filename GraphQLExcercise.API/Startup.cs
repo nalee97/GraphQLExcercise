@@ -1,4 +1,5 @@
-﻿using GraphQLExcercise.API.Schema;
+﻿//this file is not necessary 2022 visual studio version
+/*using GraphQLExcercise.API.Schema;
 using GraphQLExcercise.API.Schema.Mutations;
 using GraphQLExcercise.API.Schema.Queries;
 using GraphQLExcercise.API.Schema.Subscriptions;
@@ -33,3 +34,4 @@ namespace GraphQLExcercise.API
         }
     }
 }
+*/
