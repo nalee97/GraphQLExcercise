@@ -1,4 +1,4 @@
-﻿//this file is not necessary 2022 visual studio version
+﻿//this file is not necessary
 /*using GraphQLExcercise.API.Schema;
 using GraphQLExcercise.API.Schema.Mutations;
 using GraphQLExcercise.API.Schema.Queries;
