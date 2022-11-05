@@ -1,6 +1,7 @@
 ﻿using GraphQLExcercise.API.Schema;
 using GraphQLExcercise.API.Schema.Mutations;
 using GraphQLExcercise.API.Schema.Queries;
+using GraphQLExcercise.API.Schema.Subscriptions;
 
 namespace GraphQLExcercise.API
 {
@@ -10,7 +11,10 @@ namespace GraphQLExcercise.API
         {
             services.AddGraphQLServer()
                 .AddQueryType<Query>()
-                .AddMutationType<Mutation>();
+                .AddMutationType<Mutation>()
+                .AddSubscriptionType<Subscription>();
+
+            services.AddInMemorySubscriptions();
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -19,6 +23,8 @@ namespace GraphQLExcercise.API
                 app.UseDeveloperExceptionPage();
             }
             app.UseRouting();
+
+            app.UseWebSockets();
 
             app.UseEndpoints(endpoints =>
             {

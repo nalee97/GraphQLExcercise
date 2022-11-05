@@ -2,6 +2,8 @@
 
 
 using GraphQLExcercise.API.Schema.Queries;
+using GraphQLExcercise.API.Schema.Subscriptions;
+using HotChocolate.Subscriptions;
 
 namespace GraphQLExcercise.API.Schema.Mutations
 {
@@ -14,24 +16,26 @@ namespace GraphQLExcercise.API.Schema.Mutations
         {
             _courses = new List<CourseResult>();
         }
-        public CourseResult CreateCourse(CourseInput courseInput)
+        public async Task<CourseResult> CreateCourse(CourseInput courseInput, [Service] ITopicEventSender topicEventSender)
         {
-            CourseResult courseType = new CourseResult()
+            CourseResult course = new CourseResult()
             {
                 Id = Guid.NewGuid(),
                 Name = courseInput.Name,
                 Subject = courseInput.Subject,
                 InstructorId = courseInput.InstructorId
             };
-            _courses.Add(courseType);
+            _courses.Add(course);
+            await topicEventSender.SendAsync(nameof(Subscription.CourseCreated), course);
 
-            return courseType;
+            return course;
 
         }
 
-        public CourseResult UpdatCourse(Guid id,CourseInput courseInput)
+        public async Task<CourseResult> UpdateCourse(Guid id,CourseInput courseInput, [Service] ITopicEventSender topicEventSender)
         {
             CourseResult course = _courses.FirstOrDefault(c => c.Id == id);
+
             if(course == null)
             {
                 throw new GraphQLException(new Error("Course Not Found","COURSE NOT FOUND"));
@@ -40,6 +44,9 @@ namespace GraphQLExcercise.API.Schema.Mutations
             course.Name = courseInput.Name;
             course.Subject = courseInput.Subject;
             course.InstructorId = courseInput.InstructorId;
+
+            string updateCourseTopic = $"{course.Id}_{nameof(Subscription.CourseUpdated)}";
+            await topicEventSender.SendAsync(updateCourseTopic, course);
 
             return course;
         }
