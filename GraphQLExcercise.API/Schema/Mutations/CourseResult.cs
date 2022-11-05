@@ -1,6 +1,4 @@
-﻿
-
-using GraphQLExcercise.API.Schema.Queries;
+﻿using GraphQLExcercise.API.Schema.Queries;
 
 namespace GraphQLExcercise.API.Schema.Mutations
 {

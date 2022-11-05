@@ -2,7 +2,7 @@
 
 namespace GraphQLExcercise.API.Schema.Mutations
 {
-    public class CourseInputType
+    public class CourseInput
     {
         public string Name { get; set; }
         public Subject Subject { get; set; }
