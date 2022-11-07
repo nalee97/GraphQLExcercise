@@ -1,12 +1,9 @@
-﻿namespace GraphQLExcercise.API.Schema.Queries
+﻿using GraphQLExcercise.API.Models;
+
+namespace GraphQLExcercise.API.Schema.Queries
 { 
 
-    public enum Subject
-    {
-        Mathematics,
-        Science,
-        English
-    }
+   
     public class CourseType
     {
         public Guid Id { get; set; }
