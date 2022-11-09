@@ -19,6 +19,11 @@ builder.Services.AddInMemorySubscriptions();
 
 /*
 builder.Services.AddDbContext<SchoolDbContext>(options =>
+options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+*/
+
+/*
+builder.Services.AddDbContext<SchoolDbContext>(options =>
 options.UseSqlite(configuration.GetConnectionString("SqlServer")));
 */
 
@@ -26,6 +31,7 @@ options.UseSqlite(configuration.GetConnectionString("SqlServer")));
 string connectionString = _configuration.GetConnectionString("default");
 builder.Services.AddPooledDbContextFactory<SchoolDbContext>(o => o.UseSqlite(connectionString));
 */
+
 var app = builder.Build();
 app.UseRouting();
 
