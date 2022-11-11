@@ -1,7 +1,5 @@
 ﻿using GraphQLExcercise.API.Schema.Mutations;
-using GraphQLExcercise.API.Schema.Queries;
 using HotChocolate.Execution;
-using HotChocolate.Language;
 using HotChocolate.Subscriptions;
 
 namespace GraphQLExcercise.API.Schema.Subscriptions

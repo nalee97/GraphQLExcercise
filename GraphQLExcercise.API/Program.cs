@@ -1,10 +1,8 @@
- using GraphQLExcercise.API;
- using GraphQLExcercise.API.Schema;
+
  using GraphQLExcercise.API.Schema.Mutations;
  using GraphQLExcercise.API.Schema.Queries;
  using GraphQLExcercise.API.Schema.Subscriptions;
  using GraphQLExcercise.API.Services;
- using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
