@@ -1,11 +1,11 @@
-global using GraphQLExcercise.API;
-global using GraphQLExcercise.API.Schema;
-global using GraphQLExcercise.API.Schema.Mutations;
-global using GraphQLExcercise.API.Schema.Queries;
-global using GraphQLExcercise.API.Schema.Subscriptions;
-global using GraphQLExcercise.API.Services;
-global using Microsoft.EntityFrameworkCore;
-global using Microsoft.Extensions.Configuration;
+ using GraphQLExcercise.API;
+ using GraphQLExcercise.API.Schema;
+ using GraphQLExcercise.API.Schema.Mutations;
+ using GraphQLExcercise.API.Schema.Queries;
+ using GraphQLExcercise.API.Schema.Subscriptions;
+ using GraphQLExcercise.API.Services;
+ using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,53 +21,13 @@ builder.Services.AddGraphQLServer().AddSubscriptionType<Subscription>();
 
 builder.Services.AddInMemorySubscriptions();
 
-
+/*
 builder.Services.AddDbContext<SchoolDbContext>(options =>
 options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-
-/*
-namespace GraphQLExcercise.API
-{
-    
-   
-
-   
-    
-    public class Program
-    {
-        public readonly IConfiguration _configuration;
-
-        public Program(IConfiguration configuration)
-        {
-            _configuration = configuration;
-        }
-
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddGraphQLServer().AddQueryType<Query>();
-            services.AddGraphQLServer().AddMutationType<Mutation>();
-            services.AddGraphQLServer().AddSubscriptionType<Subscription>();
-
-            services.AddInMemorySubscriptions();
-
-            string connectionString = _configuration.GetConnectionString("default");
-            services.AddPooledDbContextFactory<SchoolDbContext>(o => o.UseSqlite(connectionString));
-
-        }
-    }
-    
-}
 */
 
-
-
-
-
-/*
 builder.Services.AddDbContext<SchoolDbContext>(options =>
-options.UseSqlite(configuration.GetConnectionString("SqlServer")));
-*/
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 app.UseRouting();
 
@@ -81,6 +41,17 @@ app.UseEndpoints(endpoints =>
 app.MapGet("/", () => "Hello World!");
 
 app.Run();
+
+
+
+
+
+
+
+/*
+builder.Services.AddDbContext<SchoolDbContext>(options =>
+options.UseSqlite(configuration.GetConnectionString("SqlServer")));
+*/
 
 
 
